@@ -245,7 +245,11 @@ for (key in names(inputParameters)) {
       print("--------------------------------------------------------------------3")
       json_string <- paste(lines, collapse = "\n")
       inputParameters[[key]] <- json_string
-    } else if (!length(lines) > 1 && (endsWith(lines, ".xlsx") || endsWith(lines, ".csv") || grepl("f=csv", lines)) && startsWith(lines, "https")) {
+    } else if (!length(lines) > 1 && (
+        endsWith(lines, ".xlsx") || grepl("f=xlsx", lines) ||
+        endsWith(lines, ".csv") || grepl("f=csv", lines) ||
+        endsWith(".json", lines) || grepl("f=json", lines)) &&
+        startsWith(lines, "https")) {
       print("--------------------------------------------------------------------4")
       json_string <- paste(lines, collapse = "\n")
       inputParameters[[key]] <- json_string
